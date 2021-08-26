@@ -13,8 +13,9 @@ import withRoot from "./withRoot";
 // hoc
 import PrivateRoute from 'hoc/privateRoute';
 // pages
-import Login from "pages/Login/Login";
-import ListingPage from 'pages/Listing/ListingPage';
+import Login from "modules/Auth/AuthContainer";
+import ListingPage from 'modules/Listing/ListingContainer';
+import MainPage from "modules/Main/MainContainer";
 
 function Routes() {
 	const classes = useStyles();
@@ -23,6 +24,7 @@ function Routes() {
 		<div className={classes.content}>
 			<Route exact={true} path="/" component={Login} />
 			<PrivateRoute path='/listing' component={ListingPage} />
+			<PrivateRoute path='/main' component={MainPage} />
 			{/* <Route exact={true} path="/listing" component={ListingPage} /> */}
 		</div>
 	);

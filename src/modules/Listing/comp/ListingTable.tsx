@@ -1,8 +1,8 @@
 import * as React from "react";
 import { Paper, Table, TableBody, TableCell, TableHead, TableRow } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
+import { Listing } from "../ListingDomain";
 // redux
-import { Listing } from "model/model";
 
 interface Props {
     list: Listing[];

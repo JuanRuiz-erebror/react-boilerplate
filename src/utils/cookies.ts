@@ -1,4 +1,4 @@
-export function removeCookie(cname: string): void {	
+export function removeCookie(cname: string): void {
 	let expires = "expires=Thu, 01 Jan 1970 00:00:00 UTC;"
 	document.cookie = cname + "=;" + expires + ";path=/";
 }
@@ -28,7 +28,7 @@ export function getCookie(cname: string): string | null {
 }
 
 export function checkCookie(): string | null {
-	let user = getCookie("token");
+	let user = getCookie("token")
 	if (user !== "") {
 		return user;
 	} else {

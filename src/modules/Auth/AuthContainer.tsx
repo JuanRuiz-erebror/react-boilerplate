@@ -14,11 +14,10 @@ import withStyles from "@material-ui/core/styles/withStyles";
 import createStyles from '@material-ui/core/styles/createStyles';
 // redux
 import { RootState } from "../../redux/rootReducer";
-import { Todo } from "../../model/model";
-import * as LoginActions from "../../redux/authentication/authenticationActions";
+import * as AuthActions from "./AuthActions";
 // elements
-import FieldUsername from 'elements/FieldUsername/FieldUsername';
-import FieldPassWord from 'elements/FieldPassword/FieldPassword';
+import FieldUsername from 'modules/Auth/comp/FieldUsername';
+import FieldPassWord from 'modules/Auth/comp/FieldPassword';
 import { Theme } from "@material-ui/core/styles/createTheme";
 
 const styles = (theme: Theme) => createStyles({
@@ -56,27 +55,28 @@ const styles = (theme: Theme) => createStyles({
 
 interface Props extends RouteComponentProps<any> {
 	classes: any;
-	todoList: Todo[];
-	actions: typeof LoginActions;
+	//todoList: Todo[];
+	actions: typeof AuthActions;
 	token: string | null;
 }
 
 function Login(props: Props) {
+
 	console.log(props);
 	const { classes } = props;
-	const [username, setUsername] = useState("");
+	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 
 	const handleSubmit = (event: any) => {
 		event.preventDefault();
 		props.actions.loginUserAction({
-			username,
+			email,
 			password
 		});
 	};
 	useEffect(() => {
 		if (props.token) {
-			props.history.push('/listing');
+			props.history.push('/main');
 		}
 	});
 	return (
@@ -87,10 +87,10 @@ function Login(props: Props) {
 					<LockOutlinedIcon />
 				</Avatar>
 				<Typography component="h1" variant="h5">
-					Sign in
+					IWO OS
 				</Typography>
 				<form className={classes.form} onSubmit={handleSubmit}>
-					<FieldUsername value={username} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setUsername(String(e.target.value))} />
+					<FieldUsername value={email} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(String(e.target.value))} />
 					<FieldPassWord value={password} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(String(e.target.value))} />
 					<Button
 						type="submit"
@@ -113,7 +113,7 @@ const mapStateToProps = (state: RootState) => ({
 
 function mapDispatchToProps(dispatch: any) {
 	return {
-		actions: bindActionCreators(LoginActions, dispatch),
+		actions: bindActionCreators(AuthActions as any, dispatch),
 	};
 }
 

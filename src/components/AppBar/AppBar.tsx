@@ -35,7 +35,7 @@ export default function ButtonAppBar() {
                         <MenuIcon />
                     </IconButton>
                     <Typography variant="h6" color="inherit" className={classes.grow}>
-                        Listings
+
                     </Typography>
                     <Button color="inherit" onClick={() => {
                         removeCookie('token');

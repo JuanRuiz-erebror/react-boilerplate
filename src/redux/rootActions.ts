@@ -1,5 +1,12 @@
-import * as ListingActions from "redux/listing/listingActions";
-import * as AuthenticationActions from 'redux/authentication/authenticationActions'
+import * as ListingActions from "modules/Listing/ListingActions";
+import * as AuthenticationActions from 'modules/Auth/AuthActions'
+
+
+
+export interface Action<T> {
+    type: any;
+    payload: T;
+}
 
 export const ActionCreators = Object.assign({},
     {

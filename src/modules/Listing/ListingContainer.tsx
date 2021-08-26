@@ -7,12 +7,12 @@ import { connect } from "react-redux";
 import { RouteComponentProps } from "react-router-dom";
 import { bindActionCreators } from "redux";
 // redux
-import { Listing } from "model/model";
-import * as listingActions from "redux/listing/listingActions";
+import * as listingActions from "./ListingActions";
 import { RootState } from "redux/rootReducer";
 // components
 import PrivateWrapper from 'components/PrivateWrapper/PrivateWrapper';
-import ListingTable from "components/ListingTable/ListingTable";
+import ListingTable from "modules/Listing/comp/ListingTable";
+import { Listing } from "./ListingDomain";
 
 const styles = (theme: Theme) => createStyles({
     root: {
@@ -40,7 +40,7 @@ interface Props extends RouteComponentProps<void>, WithStyles<typeof styles> {
     actions: typeof listingActions;
 }
 
-class ListingPage extends React.Component<Props> {
+class ListingContainer extends React.Component<Props> {
 
     componentDidMount() {
         this.props.actions.getListingAction();
@@ -91,11 +91,11 @@ function mapStateToProps(state: RootState) {
 
 function mapDispatchToProps(dispatch: any) {
     return {
-        actions: bindActionCreators(listingActions, dispatch),
+        actions: bindActionCreators(listingActions as any, dispatch),
     };
 }
 
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(withStyles(styles)(ListingPage));
+)(withStyles(styles)(ListingContainer))
