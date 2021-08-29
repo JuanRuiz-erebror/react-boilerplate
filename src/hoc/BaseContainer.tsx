@@ -20,10 +20,6 @@ const drawerWidth = 240;
 const BaseContainer = (Component: any, options: {}) => function Comp(props: BaseContainerProps) {
 
 
-    //const [appState] = useReducer(appReducer, initialAppState);
-
-
-
     const useStyles = makeStyles((theme: Theme) => ({
         root: {
             width: "100%",
@@ -98,56 +94,6 @@ const BaseContainer = (Component: any, options: {}) => function Comp(props: Base
         </div >
     )
 
-
-
-
-
-    // switch (template) {
-    //     case 1:
-    //         return (
-
-    //             <div>
-    //                 {/* <style>{`html, body, .row { color: ${themeObject.color}; height: 100%; overflow-y:hidden }`}</style>							 */}
-    //                 <style>{`html, body, .row { font-family: Montserrat; height: 100%; overflow-y:hidden; overflow-x:hidden }`}</style>
-    //                 <ThemeProvider theme={themeObject}>
-    //                     <Height100>
-    //                         {navbar &&
-    //                             <div></div>
-    //                             // <NavbarComponent 
-    //                             // 	isAuth={isAuth}
-    //                             // 	theme={theme}
-    //                             // 	user={user}
-    //                             // 	intlActions={intlActions}
-    //                             // 	userActions={userActions}
-    //                             // 	themeActions={themeActions}
-    //                             // 	locale={locale} 
-    //                             // 	messages={messages} 
-    //                             // />
-    //                         }
-
-    //                         <ComposedComponent
-    //                             //setArrayModels={this.setArrayModels}
-    //                             renderModelsLoaded={this.renderModelsLoaded}
-    //                             deleteArrayModel={this.deleteArrayModel}
-    //                             {...this.props} />
-
-    //                     </Height100>
-    //                 </ThemeProvider>
-
-    //             </div>
-    //         )
-    //     case 2:
-    //         return (
-    //             <div>
-    //                 <style>{`html, body, .row { height: 100%; overflow-y:hidden }`}</style>
-    //                 <ThemeProvider theme={themeObject}>
-    //                     <ComposedComponent {...this.props} />
-    //                 </ThemeProvider>
-    //             </div>
-    //         )
-    // }
-
-
 }
 
 const mapStateToProps = (state: RootState) => ({
@@ -159,9 +105,6 @@ const mapDispatchToProps = (dispatch: any) => {
         //actions: bindActionCreators(AuthActions as any, dispatch),
     }
 }
-
-
-//export default connect(mapStateToProps, mapDispatchToProps)(BaseContainer)
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps)
 

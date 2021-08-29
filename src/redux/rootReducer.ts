@@ -3,8 +3,6 @@ import { combineReducers } from "redux";
 import { routerReducer, RouterState } from 'react-router-redux'
 import { listingReducer, ListingReducerType } from "modules/Listing/ListingReducer";
 import { authenticationReducer, AuthenticationReducerType } from "modules/Auth/AuthReducer";
-import { Action } from "./rootActions";
-import createReducer from "./createReducer";
 import { appReducer, AppReducerType } from "modules/App/AppReducer";
 
 
