@@ -1,4 +1,4 @@
-import { Button, Grid } from "@material-ui/core";
+import { Button, CssBaseline, Grid } from "@material-ui/core";
 import { Theme } from "@material-ui/core/styles";
 import { WithStyles, createStyles, withStyles } from '@material-ui/core/styles';
 
@@ -12,15 +12,13 @@ import { RootState } from "redux/rootReducer";
 // components
 import PrivateWrapper from 'components/PrivateWrapper/PrivateWrapper';
 import ListingTable from "modules/Listing/comp/ListingTable";
+import BaseContainer from "hoc/BaseContainer";
+
+
 
 const styles = (theme: Theme) => createStyles({
     root: {
-        padding: 20,
-        [theme.breakpoints.down("md")]: {
-            paddingTop: 50,
-            paddingLeft: 15,
-            paddingRight: 15,
-        },
+        height: '100vh',
     },
 
     buttonContainer: {
@@ -53,6 +51,7 @@ class MainContainer extends React.Component<Props> {
             <PrivateWrapper>
                 <Grid container className={classes.root}>
 
+                    <CssBaseline />
                 </Grid>
             </PrivateWrapper>
         );
@@ -73,7 +72,7 @@ function mapDispatchToProps(dispatch: any) {
     };
 }
 
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(withStyles(styles)(MainContainer));
+
+const Main = BaseContainer(MainContainer)
+
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(Main));
